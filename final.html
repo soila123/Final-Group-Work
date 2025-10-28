@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UB - Fundamentals of Computing</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      background-color: #000;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: transparent;
+      z-index: 1000;
+    }
+
+    .logo img { width: 180px; }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      padding: 6px 12px;
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #fff;
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 18px;
+      color: #fff;
+      margin-left: 20px; /* shifted left so all icons are visible */
+    }
+
+    /* Background video */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    /* Sections */
+    section {
+      padding: 10px 50px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    section h2 { color: #f5f5f5; margin-bottom: 20px; font-size: 2em; }
+    section p { max-width: 800px; margin: 0 auto 20px; line-height: 1.7; color: #ddd; }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 80px;
+      min-height: 80vh;
+    }
+
+    .hero-text {
+      background: rgba(0,0,0,0.5);
+      padding: 35px 30px;
+      border-radius: 10px;
+      max-width: 700px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.2s ease-out forwards;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-text h1 { font-size: 36px; margin-bottom: 15px; }
+    .hero-text p { font-size: 17px; line-height: 1.6; color: #f0f0f0; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .project-card {
+      display: block;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      text-decoration: none;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(255,255,255,0.2);
+    }
+
+    .project-card:hover {
+      background: rgba(59,122,240,0.7);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(59,122,240,0.7);
+    }
+
+    .concept-gallery {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 20px 0;
+    }
+
+    .concept-card {
+      background: none; /* removed dark background */
+      border-radius: 12px;
+      padding: 10px;
+      width: 180px;
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .concept-card h3 {
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .concept-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #3b7af0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .concept-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(59,122,240,0.6);
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .team-member {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(59,122,240,0.7);
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #3b7af0;
+      margin-bottom: 15px;
+    }
+
+    .music-controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(30,63,122,0.6);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 13px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 1000;
+    }
+
+    .music-controls:hover {
+      background: rgba(59,122,240,0.7);
+      transform: translateY(-2px);
+    }
+
+    .spacer { height: 80px; }
+
+    .pdf-container {
+      width: 100%;
+      max-width: 900px;
+      height: 400px;
+      overflow: auto;
+      border-radius: 2px;
+      margin: 20px auto;
+      background-color: #111;
+    }
+
+    .pdf-container iframe {
+      width: 80%;
+      height: 80%;
+      border: none;
+    }
+
+    /* Video container */
+    .video-container {
+      position: relative;
+      width: 80%;         
+      max-width: 700px;   
+      margin: 20px auto;
+      padding-bottom: 22.5%; /* smaller height */
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: transparent;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    @media(max-width:768px) {
+      section { padding: 80px 20px; }
+      .hero-text h1 { font-size: 28px; }
+      .hero-text p { font-size: 15px; }
+      .logo img { width: 140px; }
+      iframe { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="https://motionbgs.com/media/5599/binary-code-falling.960x540.mp4" type="video/mp4">
+  </video>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="https://www.ubelearn.com/pluginfile.php/1/core_admin/logo/0x200/1737673108/UB_logo_2017%20(2).png" alt="UB Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#course">Course</a></li>
+        <li><a href="#project">Project</a></li>
+        <li><a href="#concepts">Concepts</a></li>
+        <li><a href="#database">Database</a></li>
+        <li><a href="#documentation">Documentation</a></li>
+        <li><a href="#team">Dev Team</a></li>
+      </ul>
+    </nav>
+    <div class="icons">🔍 👤 🛒</div>
+  </header>
+
+  <div class="spacer" id="home"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>FUNDAMENTALS OF COMPUTING</h1>
+      <p>This course introduces students to the core principles of Computer Science — including architecture, software, networks, and data.</p>
+    </div>
+  </section>
+
+  <!-- Course Section -->
+  <section id="course">
+    <h2>Course Overview</h2>
+    <p>Course description and materials will appear here soon. Explore the essentials of computing and programming.</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="project">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <a href="notegate.html" class="project-card">Project 1: NOT Gate</a>
+      <a href="andgate.html" class="project-card">Project 2: AND Gate</a>
+      <a href="binatohexa.html" class="project-card">Project 3: Binary to Hexadecimal Converter</a>
+      <a href="asc.html" class="project-card">Project 4: ASCII Converter</a>
+      <a href="machine.html" class="project-card">Project 5: Machine Language Instructions Converter</a>
+    </div>
+  </section>
+
+  <!-- Concepts Section -->
+  <section id="concepts">
+    <h2>Concepts</h2>
+    <p>Click on a preview image below to open the full PowerPoint presentation from Google Drive.</p>
+    <div class="concept-gallery">
+      <div class="concept-card">
+        <h3>Basic Data Structures</h3>
+        <a href="https://docs.google.com/presentation/d/1WbLevfyx1ueFGYLBotnq3ohi2eOLmiiHXO9DANBD2II/edit?usp=sharing">
+          <img src="datastructure.png" alt="Open PowerPoint" class="concept-image">
+        </a>
+      </div>
+      <div class="concept-card">
+        <h3>Algorithms</h3>
+        <a href="https://docs.google.com/presentation/d/1MXqIqQ9g6t4sIX9lXGMF9dANyQaSL9X6/edit?slide=id.p1#slide=id.p1" target="_blank">
+          <img src="https://kryanbz.github.io/FoC/concepts.PNG" alt="Algorithms Presentation" class="concept-image">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Database Section -->
+  <section id="database">
+    <h2 style="margin-top:100px;">Database</h2>
+    <p style="margin-top:20px;">Watch the demonstration video below:</p>
+    <div class="video-container">
+      <iframe 
+        src="https://drive.google.com/file/d/1HT0aPYPTp-eGCWRnqPSGSqNtUjCF8EIr/preview" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Documentation Section -->
+  <section id="documentation">
+ <br></br>
+    <h2>DOCUMENTATION</h2>
+    <p>
+      <a href="https://drive.google.com/file/d/1R3ckBarx0cCf6S4YOZnc1ThUrOStNhcs/view?usp=sharing" target="_blank" style="color:#3b7af0;">
+        Click here to open in a new tab
+      </a>.
+    </p>
+    <div class="pdf-container">
+      <iframe 
+        src="https://drive.google.com/file/d/1R3ckBarx0cCf6S4YOZnc1ThUrOStNhcs/preview">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team">
+    <h2>Development Team</h2>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="soila.png" alt="Soila Paiz">
+        <h3>Soila Paiz</h3>
+        <p>Originally from the Corozal District.</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/100" alt="Member">
+        <h3>Member Two</h3>
+        <p>UI/UX designer with a passion for intuitive interfaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-controls" onclick="toggleMusic()">▶ Play Music</button>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const button = document.querySelector(".music-controls");
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        button.textContent = "⏸ Pause Music";
+      } else {
+        music.pause();
+        button.textContent = "▶ Play Music";
+      }
+    }
+
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav ul li a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight)
+          current = section.getAttribute("id");
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
