@@ -25,9 +25,7 @@
       background-color: transparent;
       z-index: 1000;
     }
-
     .logo img { width: 180px; }
-
     nav ul {
       list-style: none;
       display: flex;
@@ -35,7 +33,6 @@
       margin: 0;
       padding: 0;
     }
-
     nav ul li a {
       padding: 6px 12px;
       background: transparent;
@@ -46,14 +43,12 @@
       font-weight: 600;
       transition: all 0.3s ease;
     }
-
     nav ul li a:hover,
     nav ul li a.active {
       background: #fff;
       color: #000;
       transform: translateY(-2px);
     }
-
     .icons {
       display: flex;
       gap: 15px;
@@ -85,10 +80,49 @@
       justify-content: center;
       text-align: center;
     }
+    section p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      line-height: 1.7;
+      color: #ddd;
+    }
 
-    section h2 { color: #f5f5f5; margin-bottom: 20px; font-size: 2em; }
-    section p { max-width: 800px; margin: 0 auto 20px; line-height: 1.7; color: #ddd; }
+    /* Glowing Headings */
+    .glow-heading {
+      color: #fff;
+      font-weight: 700;
+      font-size: 2em;
+      text-shadow:
+        0 0 5px #3b7af0,
+        0 0 10px #3b7af0,
+        0 0 20px #3b7af0,
+        0 0 40px #3b7af0;
+      animation: textGlow 2.5s infinite alternate;
+      margin-bottom: 20px;
+    }
+    @keyframes textGlow {
+      0% {
+        text-shadow:
+          0 0 5px #3b7af0,
+          0 0 10px #3b7af0,
+          0 0 20px #3b7af0;
+      }
+      50% {
+        text-shadow:
+          0 0 10px #3b7af0,
+          0 0 20px #3b7af0,
+          0 0 40px #3b7af0,
+          0 0 80px #3b7af0;
+      }
+      100% {
+        text-shadow:
+          0 0 5px #3b7af0,
+          0 0 10px #3b7af0,
+          0 0 20px #3b7af0;
+      }
+    }
 
+    /* Hero Section */
     .hero {
       display: flex;
       flex-direction: column;
@@ -97,10 +131,7 @@
       padding-top: 80px;
       min-height: 80vh;
     }
-
-    /* Glowing centered hero-text */
     .hero-text {
-      border: 3px solid #3b7af0;
       padding: 35px 40px;
       border-radius: 12px;
       background: rgba(0,0,0,0.55);
@@ -110,13 +141,11 @@
       margin: 0 auto;
       text-align: center;
     }
-
     @keyframes glowPulse {
       0% { box-shadow: 0 0 8px #3b7af0, inset 0 0 4px rgba(59,122,240,0.25); }
       50% { box-shadow: 0 0 28px #3b7af0, inset 0 0 14px rgba(59,122,240,0.25); }
       100% { box-shadow: 0 0 8px #3b7af0, inset 0 0 4px rgba(59,122,240,0.25); }
     }
-
     .hero-text h1 {
       font-size: 42px;
       font-weight: 700;
@@ -124,9 +153,9 @@
       margin: 0 0 10px 0;
       text-shadow: 0 0 10px rgba(59,122,240,0.9);
     }
-
     .hero-text p { font-size: 17px; color: #e6f0ff; margin: 0; }
 
+    /* Grids and Cards */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -135,7 +164,6 @@
       width: 100%;
       max-width: 1000px;
     }
-
     .project-card {
       display: block;
       background: rgba(255,255,255,0.06);
@@ -149,21 +177,19 @@
       box-shadow: 0 2px 8px rgba(255,255,255,0.04);
       border: 1px solid rgba(59,122,240,0.12);
     }
-
     .project-card:hover {
       background: rgba(59,122,240,0.12);
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(59,122,240,0.15);
     }
-
     .concept-gallery { display: flex; gap: 12px; overflow-x: auto; padding: 20px 0; }
     .concept-card { width: 180px; flex: 0 0 auto; text-align: center; }
     .concept-image { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 2px solid #3b7af0; }
-
     .team-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; max-width: 1000px; }
     .team-member { background: rgba(255,255,255,0.06); border-radius: 15px; text-align: center; padding: 20px; }
     .team-member img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #3b7af0; margin-bottom: 15px; }
 
+    /* Music Controls */
     .music-controls { position: fixed; bottom: 20px; right: 20px; background: rgba(30,63,122,0.6); color: white; padding: 8px 14px; border-radius: 25px; font-weight: bold; font-size: 13px; z-index: 1000; }
     .music-controls:hover { background: rgba(59,122,240,0.8); transform: translateY(-2px); }
 
@@ -175,7 +201,6 @@
     .video-container { position: relative; width: 80%; max-width: 700px; margin: 20px auto; padding-bottom: 22.5%; border-radius: 10px; overflow: hidden; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px; }
 
-    /* small helper for download links */
     .doc-link { color: #bfe1ff; text-decoration: none; border-bottom: 1px dashed rgba(191,225,255,0.4); }
 
     @media(max-width:768px) {
@@ -218,21 +243,21 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-text">
-      <b></b> <b></b>
       <h1>FUNDAMENTALS OF COMPUTING</h1>
-      <p>About Course — introduces core computing principles: architecture, software, networks, and data.</p>
+      <br></br><br></br>
+      <p>This subject introduces core computing principles: architecture, software, networks, and data.</p>
     </div>
   </section>
 
   <!-- Course Section -->
   <section id="course">
-    <h2>Course Overview</h2>
+    <h2 class="glow-heading">Course Overview</h2>
     <p>This course provides students with a solid foundation in the essential principles of Computer Science. It explores key areas such as computer architecture, software development, networking concepts, and data management. Through hands-on activities and theoretical learning, students gain a clear understanding of how computing systems work and how they are applied across modern technology.</p>
   </section>
 
   <!-- Projects Section -->
   <section id="project">
-    <h2>Projects</h2>
+    <h2 class="glow-heading">Projects</h2>
     <div class="projects-grid">
       <a href="notegate.html" class="project-card">Project 1: NOT Gate</a>
       <a href="andgate.html" class="project-card">Project 2: AND Gate</a>
@@ -244,7 +269,7 @@
 
   <!-- Concepts Section -->
   <section id="concepts">
-    <h2>Concepts</h2>
+    <h2 class="glow-heading">Concepts</h2>
     <p>Click on a preview image below to open the full PowerPoint presentation from Google Drive.</p>
     <div class="concept-gallery">
       <div class="concept-card">
@@ -264,37 +289,26 @@
 
   <!-- Database Section -->
   <section id="database">
-    <h2 style="margin-top:40px;">Database</h2>
-    <p style="margin-top:20px;">Watch the demonstration video below:</p>
+    <h2 class="glow-heading">Database</h2>
+    <p>Watch the demonstration video below:</p>
     <div class="video-container">
-      <iframe 
-        src="https://drive.google.com/file/d/1HT0aPYPTp-eGCWRnqPSGSqNtUjCF8EIr/preview" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen>
-      </iframe>
+      <iframe src="https://drive.google.com/file/d/1HT0aPYPTp-eGCWRnqPSGSqNtUjCF8EIr/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-    <p style="margin-top:20px;">Database schema and sample SQL files are available for download: <a class="doc-link" href="#">Download schema</a></p>
+    <p>Database schema and sample SQL files are available for download: <a class="doc-link" href="#">Download schema</a></p>
   </section>
 
   <!-- Documentation Section -->
   <section id="documentation">
-    <h2>DOCUMENTATION</h2>
-    <p>
-      <a href="https://docs.google.com/document/d/14InngTBQFjLKseCjZZGzOP804KqlkiyE/edit?usp=sharing&ouid=117047751286497311131&rtpof=true&sd=true" target="_blank" class="doc-link">
-        Click here to open documentation in a new tab
-      </a>.
-    </p>
+    <h2 class="glow-heading">Documentation</h2>
+    <p><a href="https://docs.google.com/document/d/14InngTBQFjLKseCjZZGzOP804KqlkiyE/edit?usp=sharing" target="_blank" class="doc-link">Click here to open documentation in a new tab</a>.</p>
     <div class="pdf-container">
-      <iframe 
-        src="https://docs.google.com/document/d/14InngTBQFjLKseCjZZGzOP804KqlkiyE/preview" 
-        title="Documentation Preview">
-      </iframe>
+      <iframe src="https://docs.google.com/document/d/14InngTBQFjLKseCjZZGzOP804KqlkiyE/preview" title="Documentation Preview"></iframe>
     </div>
   </section>
 
   <!-- Courses Section -->
   <section id="courses">
-    <h2>Courses</h2>
+    <h2 class="glow-heading">Courses</h2>
     <p>Available modules and syllabus outlines:</p>
     <div class="projects-grid">
       <div class="project-card">FUNDAMENTALS OF COMPUTING</div>
@@ -306,7 +320,7 @@
 
   <!-- Team Section -->
   <section id="team">
-    <h2>Development Team</h2>
+    <h2 class="glow-heading">Development Team</h2>
     <div class="team-container">
       <div class="team-member">
         <img src="soila.png" alt="Soila Paiz">
@@ -340,7 +354,6 @@
       }
     }
 
-    // Smooth nav active link
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll("nav ul li a");
     window.addEventListener("scroll", () => {
@@ -362,7 +375,4 @@
   </script>
 </body>
 </html>
-
-
-
 
