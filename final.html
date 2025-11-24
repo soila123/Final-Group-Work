@@ -25,7 +25,9 @@
       background-color: transparent;
       z-index: 1000;
     }
+
     .logo img { width: 180px; }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -33,6 +35,7 @@
       margin: 0;
       padding: 0;
     }
+
     nav ul li a {
       padding: 6px 12px;
       background: transparent;
@@ -43,12 +46,14 @@
       font-weight: 600;
       transition: all 0.3s ease;
     }
+
     nav ul li a:hover,
     nav ul li a.active {
       background: #fff;
       color: #000;
       transform: translateY(-2px);
     }
+
     .icons {
       display: flex;
       gap: 15px;
@@ -80,49 +85,45 @@
       justify-content: center;
       text-align: center;
     }
-    section p {
-      max-width: 800px;
-      margin: 0 auto 20px;
-      line-height: 1.7;
-      color: #ddd;
-    }
 
-    /* Glowing Headings */
+    /* Glowing headings */
     .glow-heading {
-      color: #fff;
-      font-weight: 700;
       font-size: 2em;
+      font-weight: 700;
+      color: #fff;
       text-shadow:
-        0 0 5px #3b7af0,
-        0 0 10px #3b7af0,
-        0 0 20px #3b7af0,
-        0 0 40px #3b7af0;
+        0 0 6px #3b7af0,
+        0 0 12px #3b7af0,
+        0 0 24px #3b7af0;
       animation: textGlow 2.5s infinite alternate;
-      margin-bottom: 20px;
-    }
-    @keyframes textGlow {
-      0% {
-        text-shadow:
-          0 0 5px #3b7af0,
-          0 0 10px #3b7af0,
-          0 0 20px #3b7af0;
-      }
-      50% {
-        text-shadow:
-          0 0 10px #3b7af0,
-          0 0 20px #3b7af0,
-          0 0 40px #3b7af0,
-          0 0 80px #3b7af0;
-      }
-      100% {
-        text-shadow:
-          0 0 5px #3b7af0,
-          0 0 10px #3b7af0,
-          0 0 20px #3b7af0;
-      }
     }
 
-    /* Hero Section */
+    .glow-heading-small {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #fff;
+      text-shadow:
+        0 0 4px #3b7af0,
+        0 0 8px #3b7af0,
+        0 0 16px #3b7af0;
+      animation: textGlowSmall 2.5s infinite alternate;
+      text-align: center;
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 6px #3b7af0, 0 0 12px #3b7af0, 0 0 24px #3b7af0; }
+      50% { text-shadow: 0 0 12px #3b7af0, 0 0 24px #3b7af0, 0 0 48px #3b7af0; }
+      100% { text-shadow: 0 0 6px #3b7af0, 0 0 12px #3b7af0, 0 0 24px #3b7af0; }
+    }
+
+    @keyframes textGlowSmall {
+      0% { text-shadow: 0 0 4px #3b7af0, 0 0 8px #3b7af0, 0 0 16px #3b7af0; }
+      50% { text-shadow: 0 0 8px #3b7af0, 0 0 16px #3b7af0, 0 0 32px #3b7af0, 0 0 64px #3b7af0; }
+      100% { text-shadow: 0 0 4px #3b7af0, 0 0 8px #3b7af0, 0 0 16px #3b7af0; }
+    }
+
+    section p { max-width: 800px; margin: 0 auto 20px; line-height: 1.7; color: #ddd; }
+
     .hero {
       display: flex;
       flex-direction: column;
@@ -131,31 +132,22 @@
       padding-top: 80px;
       min-height: 80vh;
     }
-    .hero-text {
-      padding: 35px 40px;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.55);
-      box-shadow: 0 0 18px #3b7af0, inset 0 0 10px rgba(59,122,240,0.25);
-      animation: glowPulse 2.5s infinite ease-in-out;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 8px #3b7af0, inset 0 0 4px rgba(59,122,240,0.25); }
-      50% { box-shadow: 0 0 28px #3b7af0, inset 0 0 14px rgba(59,122,240,0.25); }
-      100% { box-shadow: 0 0 8px #3b7af0, inset 0 0 4px rgba(59,122,240,0.25); }
-    }
+
     .hero-text h1 {
       font-size: 42px;
       font-weight: 700;
       letter-spacing: 1px;
       margin: 0 0 10px 0;
       text-shadow: 0 0 10px rgba(59,122,240,0.9);
+      animation: textGlow 2.5s infinite alternate;
     }
-    .hero-text p { font-size: 17px; color: #e6f0ff; margin: 0; }
 
-    /* Grids and Cards */
+    .hero-text p {
+      font-size: 17px;
+      color: #e6f0ff;
+      margin: 0;
+    }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -164,6 +156,7 @@
       width: 100%;
       max-width: 1000px;
     }
+
     .project-card {
       display: block;
       background: rgba(255,255,255,0.06);
@@ -175,33 +168,132 @@
       font-weight: 600;
       transition: all 0.3s ease;
       box-shadow: 0 2px 8px rgba(255,255,255,0.04);
-      border: 1px solid rgba(59,122,240,0.12);
     }
+
     .project-card:hover {
       background: rgba(59,122,240,0.12);
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(59,122,240,0.15);
     }
-    .concept-gallery { display: flex; gap: 12px; overflow-x: auto; padding: 20px 0; }
-    .concept-card { width: 180px; flex: 0 0 auto; text-align: center; }
-    .concept-image { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; border: 2px solid #3b7af0; }
-    .team-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; max-width: 1000px; }
-    .team-member { background: rgba(255,255,255,0.06); border-radius: 15px; text-align: center; padding: 20px; }
-    .team-member img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #3b7af0; margin-bottom: 15px; }
+
+    /* Concept Section */
+    .concept-gallery {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px 0;
+      justify-content: center;
+    }
+
+    .concept-card {
+      width: 180px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .concept-card h3 {
+      margin-bottom: 10px;
+      min-height: 2.2em;
+    }
+
+    .concept-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #3b7af0;
+    }
+
+    /* Team Section */
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      max-width: 1000px;
+    }
+
+    .team-member {
+      background: rgba(255,255,255,0.06);
+      border-radius: 15px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #3b7af0;
+      margin-bottom: 15px;
+    }
+
+    /* PDF and Video */
+    .pdf-container, .video-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    .pdf-container {
+      height: 400px;
+      overflow: auto;
+      background-color: #111;
+      padding: 12px;
+      border-radius: 6px;
+    }
+
+    .pdf-container iframe,
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 22.5%;
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
 
     /* Music Controls */
-    .music-controls { position: fixed; bottom: 20px; right: 20px; background: rgba(30,63,122,0.6); color: white; padding: 8px 14px; border-radius: 25px; font-weight: bold; font-size: 13px; z-index: 1000; }
-    .music-controls:hover { background: rgba(59,122,240,0.8); transform: translateY(-2px); }
+    .music-controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(30,63,122,0.6);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 13px;
+      z-index: 1000;
+    }
+
+    .music-controls:hover {
+      background: rgba(59,122,240,0.8);
+      transform: translateY(-2px);
+    }
 
     .spacer { height: 80px; }
 
-    .pdf-container { width: 100%; max-width: 900px; height: 400px; overflow: auto; border-radius: 6px; margin: 20px auto; background-color: #111; padding: 12px; }
-    .pdf-container iframe { width: 100%; height: 100%; border: none; }
-
-    .video-container { position: relative; width: 80%; max-width: 700px; margin: 20px auto; padding-bottom: 22.5%; border-radius: 10px; overflow: hidden; }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px; }
-
-    .doc-link { color: #bfe1ff; text-decoration: none; border-bottom: 1px dashed rgba(191,225,255,0.4); }
+    .doc-link { 
+      color: #bfe1ff; 
+      text-decoration: none; 
+      border-bottom: 1px dashed rgba(191,225,255,0.4); 
+    }
 
     @media(max-width:768px) {
       section { padding: 80px 20px; }
@@ -244,7 +336,7 @@
   <section class="hero">
     <div class="hero-text">
       <h1>FUNDAMENTALS OF COMPUTING</h1>
-      <p>This subject introduces core computing principles: architecture, software, networks, and data.</p>
+      <p>About Course — introduces core computing principles: architecture, software, networks, and data.</p>
     </div>
   </section>
 
@@ -272,13 +364,13 @@
     <p>Click on a preview image below to open the full PowerPoint presentation from Google Drive.</p>
     <div class="concept-gallery">
       <div class="concept-card">
-        <h3>Basic Data Structures</h3>
+        <h3 class="glow-heading-small">Basic Data Structures</h3>
         <a href="https://docs.google.com/presentation/d/1WbLevfyx1ueFGYLBotnq3ohi2eOLmiiHXO9DANBD2II/edit?usp=sharing" target="_blank">
           <img src="datastructure.png" alt="Open PowerPoint" class="concept-image">
         </a>
       </div>
       <div class="concept-card">
-        <h3>Algorithms</h3>
+        <h3 class="glow-heading-small">Algorithms</h3>
         <a href="https://docs.google.com/presentation/d/1MXqIqQ9g6t4sIX9lXGMF9dANyQaSL9X6/edit?slide=id.p1#slide=id.p1" target="_blank">
           <img src="https://kryanbz.github.io/FoC/concepts.PNG" alt="Algorithms Presentation" class="concept-image">
         </a>
@@ -299,7 +391,11 @@
   <!-- Documentation Section -->
   <section id="documentation">
     <h2 class="glow-heading">Documentation</h2>
-    <p><a href="https://docs.google.com/document/d/14InngTBQFjLKseCjZZGzOP804KqlkiyE/edit?usp=sharing" target="_blank" class="doc-link">Click here to open documentation in a new tab</a>.</p>
+    <p>
+      <a href="https://docs.google.com/document/d/14InngTBQFjLKseCjZZGzOP804KqlkiyE/edit?usp=sharing" target="_blank" class="doc-link">
+        Click here to open documentation in a new tab
+      </a>.
+    </p>
     <div class="pdf-container">
       <iframe src="https://docs.google.com/document/d/14InngTBQFjLKseCjZZGzOP804KqlkiyE/preview" title="Documentation Preview"></iframe>
     </div>
@@ -353,6 +449,7 @@
       }
     }
 
+    // Smooth nav active link
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll("nav ul li a");
     window.addEventListener("scroll", () => {
@@ -371,9 +468,8 @@
         }
       });
     });
-  </script>
-</body>
-</html>
+  </script
 
+    
 
-
+   
